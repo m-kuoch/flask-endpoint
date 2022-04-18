@@ -1,4 +1,4 @@
-### This file contains the functions for interacting with the coinbase API
+"""This file contains the functions for interacting with the coinbase API"""
 
 import json
 from typing import List, Union
