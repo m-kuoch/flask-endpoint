@@ -78,8 +78,22 @@ def create_app():
     return app
 
 
+def range_type(i, start, end):
+    """Check if input is in range (inclusive)."""
+    value = int(i)
+    if start <= value <= end:
+        return value
+    else:
+        raise argparse.ArgumentTypeError(f'value not in range [{start}-{end}]')
+
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Run the app.')
-    parser.add_argument('--port', type=int, default=5001,)
+    parser.add_argument(
+        '--port',
+        type=lambda x: range_type(x, 1, 65535),
+        default=5001,
+        metavar='[1-65535]',
+    )
     app = create_app()
     app.run(host='0.0.0.0', port=parser.parse_args().port)
