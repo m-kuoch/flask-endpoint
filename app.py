@@ -18,14 +18,12 @@ def create_app():
     valid_pairs = []
     load_pairs_success = False
 
-
     # Load the currency pairs from Coinbase API
     try:
         valid_pairs = get_valid_currency_pairs()
         load_pairs_success = True
     except:
         print("Error loading currency pairs")
-
 
     @app.route('/candles')
     def get_candles():
@@ -38,10 +36,10 @@ def create_app():
         """
         # First clean inputs
         if '/' in request.args['currency_pair']:
-            return "Invalid currency pair, forbidden character '/'", 400
+            return "Invalid currency pair, forbidden character '/'.", 400
         # Check if currency pair is valid
         if load_pairs_success and request.args['currency_pair'] not in valid_pairs:
-            return "Invalid currency pair", 400
+            return "Invalid currency pair.", 400
 
         # Check for valid start_time and end_time
         start_time = check_if_valid_iso(request.args['start_time'])
