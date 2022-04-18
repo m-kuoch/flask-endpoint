@@ -10,8 +10,7 @@ from utils import (
     get_one_minute_candles_from_coinbase
 )
 
-INVALID_TIME_MSG = 'Invalid time format. ' \
-                   'Please use ISO 8601 and specify up to the minute.'
+INVALID_TIME_MSG = 'Please use ISO 8601 and specify up to the minute.'
 
 app = Flask(__name__)
 valid_pairs = []
@@ -53,9 +52,9 @@ def get_candles():
     if start_time is None:
         return "Invalid start time. " + INVALID_TIME_MSG, 400
     if end_time is None:
-        return "Invalid end time", 400
+        return "Invalid end time. "+ INVALID_TIME_MSG, 400
     if start_time > end_time:
-        return "Start time is after end time. " + INVALID_TIME_MSG, 400
+        return "Start time is after end time.", 400
 
     # Split time window into 5 hours intervals and get candles for each
     all_candles = []
