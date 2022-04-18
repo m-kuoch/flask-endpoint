@@ -10,12 +10,10 @@ from utils import (
     get_one_minute_candles_from_coinbase
 )
 
+INVALID_TIME_MSG = 'Please use ISO 8601 and specify up to the minute.'
 
 def create_app():
     """Create the app."""
-
-    INVALID_TIME_MSG = 'Please use ISO 8601 and specify up to the minute.'
-
     app = Flask(__name__)
     valid_pairs = []
     load_pairs_success = False
