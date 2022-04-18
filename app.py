@@ -1,8 +1,10 @@
 """App with candles endpoint."""
+import argparse
 from datetime import timedelta
 from flask import Flask
 from flask import request
 import json
+
 
 from utils import (
     check_if_valid_iso,
@@ -77,5 +79,7 @@ def create_app():
 
 
 if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description='Run the app.')
+    parser.add_argument('--port', type=int, default=5001,)
     app = create_app()
-    app.run(host='0.0.0.0', port=5001)
+    app.run(host='0.0.0.0', port=parser.parse_args().port)
