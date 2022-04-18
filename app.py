@@ -31,6 +31,7 @@ def create_app():
     def get_candles():
         """
         Get mintue candles between start time and end time for currency pair.
+        The candles are returned as a list of lists from most recent to least recent.
         This route takes parameters
             - currency_pair: the currency pair
             - start_time: the start time (will be rounded up to nearest minute)
