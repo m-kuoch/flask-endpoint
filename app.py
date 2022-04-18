@@ -17,19 +17,6 @@ valid_pairs = []
 load_pairs_success = False
 
 
-@app.route('/')
-def testing():
-    """Testing the Flask app."""
-    return 'Hello :)'
-
-
-@app.route('/testing2')
-def testing2():
-    """Testing another route."""
-    print(request.args)
-    return 'Hello again!'
-
-
 @app.route('/candles')
 def get_candles():
     """
