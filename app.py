@@ -56,6 +56,10 @@ def get_candles():
     if start_time > end_time:
         return "Start time is after end time.", 400
 
+    # Check that time interval is less than 24 hours
+    if end_time - start_time > timedelta(days=1):
+        return "Time interval is too long (greater than 24 hours).", 400
+
     # Split time window into 5 hours intervals and get candles for each
     all_candles = []
     interval_start = start_time
