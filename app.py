@@ -4,8 +4,11 @@ from flask import Flask
 from flask import request
 import json
 
-from coinbase_api import get_one_minute_candles_from_coinbase
-from utils import check_if_valid_iso, get_valid_currency_pairs
+from utils import (
+    check_if_valid_iso,
+    get_valid_currency_pairs,
+    get_one_minute_candles_from_coinbase
+)
 
 INVALID_TIME_MSG = 'Invalid time format. ' \
                    'Please use ISO 8601 and specify up to the minute.'
